@@ -1,0 +1,48 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BIGINTEGER_H	BigInteger.h	2;"	d
+BigIntBase	BigIntBase.cc	/^	BigIntBase(ui n){$/;"	f	class:BigIntBase
+BigIntBase	BigIntBase.cc	/^    BigIntBase(): size(0){$/;"	f	class:BigIntBase
+BigIntBase	BigIntBase.cc	/^    BigIntBase(bool forCapacity, ui _capacity){$/;"	f	class:BigIntBase	file:
+BigIntBase	BigIntBase.cc	/^    BigIntBase(const BigIntBase& rhs){$/;"	f	class:BigIntBase
+BigIntBase	BigIntBase.cc	/^    BigIntBase(const char* numStr){$/;"	f	class:BigIntBase
+BigIntBase	BigIntBase.cc	/^class BigIntBase{$/;"	c	file:
+BigInteger	BigInteger.h	/^	BigInteger(bool pos, BigVector &dataNow): pos(true), data(dataNow) ){}$/;"	f	class:BigInteger
+BigInteger	BigInteger.h	/^	BigInteger(int n): pos(n>=0), data( BigVector( (ui)(abs(n)) ) ){}$/;"	f	class:BigInteger
+BigInteger	BigInteger.h	/^	BigInteger(ui n): pos(true), data( BigVector(n) ){}$/;"	f	class:BigInteger
+BigInteger	BigInteger.h	/^    BigInteger(): pos(true), data(BigVector()){}$/;"	f	class:BigInteger
+BigInteger	BigInteger.h	/^    BigInteger(char* numStr){$/;"	f	class:BigInteger
+BigInteger	BigInteger.h	/^class BigInteger{$/;"	c
+BigUnit	BigIntBase.cc	/^typedef unsigned char BigUnit;$/;"	t	file:
+BigUnit	BigInteger.h	5;"	d
+add	BigIntBase.cc	/^    void add(BigIntBase &a, BigIntBase &b){$/;"	f	class:BigIntBase
+assign	BigIntBase.cc	/^    void assign(BigIntBase& lhs, const BigIntBase& rhs){$/;"	f	class:BigIntBase
+capacity	BigIntBase.cc	/^    ui capacity;$/;"	m	class:BigIntBase	file:
+compare	BigIntBase.cc	/^    static int compare(BigIntBase &a, BigIntBase &b) {$/;"	f	class:BigIntBase
+data	BigIntBase.cc	/^    BigUnit* data = NULL;$/;"	m	class:BigIntBase	file:
+data	BigInteger.h	/^    BigVector data;$/;"	m	class:BigInteger
+defaultCapacity	BigIntBase.cc	/^    const static ui defaultCapacity = 100;$/;"	m	class:BigIntBase	file:
+expand	BigIntBase.cc	/^    void expand(int newCapacity){$/;"	f	class:BigIntBase
+main	BigInteger.cc	/^int main(){$/;"	f
+main	temp.cc	/^int main(){$/;"	f
+main	testBigIntBase.cc	/^int main(){$/;"	f
+operator +	BigIntBase.cc	/^    BigIntBase operator+(BigIntBase& b) {$/;"	f	class:BigIntBase
+operator +	BigInteger.cc	/^BigInteger BigInteger::operator+(const BigInteger& b){$/;"	f	class:BigInteger
+operator <<	BigIntBase.cc	/^ostream& operator <<(ostream &os, BigIntBase& n) {$/;"	f
+operator <<	BigInteger.cc	/^std::ostream& operator <<(ostream &os, BigInteger& n) {$/;"	f
+operator =	BigIntBase.cc	/^    BigIntBase& operator=(const BigIntBase& rhs) {$/;"	f	class:BigIntBase
+operator []	BigIntBase.cc	/^    BigUnit& operator[](const ui idx) {$/;"	f	class:BigIntBase
+pos	BigInteger.h	/^    bool pos;$/;"	m	class:BigInteger
+setCapacity	BigIntBase.cc	/^    void setCapacity(){$/;"	f	class:BigIntBase
+setCapacity	BigIntBase.cc	/^    void setCapacity(ui length){$/;"	f	class:BigIntBase	file:
+size	BigIntBase.cc	/^    ui size;$/;"	m	class:BigIntBase	file:
+size	BigInteger.h	/^    inline ui size(){ return data.size; }$/;"	f	class:BigInteger
+subtract	BigIntBase.cc	/^    void subtract(BigIntBase &a, BigIntBase &b){$/;"	f	class:BigIntBase
+test	testBigIntBase.cc	/^void test(int label, int testValue, int rightValue){$/;"	f
+test	testBigIntBase.cc	/^void test(int label, string test, const char* rightValue){$/;"	f
+toStringInBase	BigIntBase.cc	/^    string toStringInBase(ui base){$/;"	f	class:BigIntBase
+toStringInBase	BigInteger.cc	/^string BigInteger::toStringInBase(ui base){$/;"	f	class:BigInteger
