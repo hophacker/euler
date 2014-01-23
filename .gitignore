@@ -1,3 +1,4 @@
 BigInteger/obj/
+*.swp
 BigInteger/debug
 BigInteger/open.sh
