@@ -2,7 +2,15 @@
 
 #ifndef BIGINTBASE_H
 #define BIGINTBASE_H
-#include "../euler.h"
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <cmath>
+#include <cstdlib>
+#include <cassert>
+using namespace std;
+#define bit(x,i) (x&(1<<i))
+#define ui unsigned int
 typedef unsigned char BigUnit;
 
 /*

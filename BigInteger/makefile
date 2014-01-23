@@ -1,20 +1,44 @@
+vpath %.cc .
 CC=g++
 CFLAGS=-g
 
+_TAR = testBigIntBase
+_OBJ = $(patsubst %,%.o,$(_TAR)) BigIntBase.o
 
-all:test testBigIntBase
+TAR = $(patsubst %,obj/%,$(_TAR))
+OBJ = $(patsubst %,obj/%,$(_OBJ))
 
-test: test.o BigIntBase.o
-	$(CC) $(CFLAGS)  $^ -o $@
+.PHONY: all clean print
 
-testBigIntBase: testBigIntBase.o BigIntBase.o
-	$(CC) $(CFLAGS)  $^ -o $@
+all: $(TAR)
 
-%.o:%.cc %.h
-	$(CC) $(CFLAGS) -c $< 
+print: 
+	echo $(OBJ)
 
-%.o:%.cc 
-	$(CC) $(CFLAGS) -c $< 
+$(TAR):$(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
+	
+$(OBJ): | obj
+obj:
+	@mkdir -p $@
 
+obj/%.o : %.cc %.h
+	@echo $<
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+
+	
+#test.o testBigIntBase.o
+#testBigIntBase: $(OBJ)
+	#$(CC) $(CFLAGS)  $^ -o $@
+
+
+#test: $(OBJ)
+	#$(CC) $(CFLAGS)  $^ -o $@
+
+#all:test testBigIntBase
+
+
+.PHONY : clean
 clean:
-	rm *.o testBigIntBase test BigIntBase.o
+	rm -rf *.o obj/ testBigIntBase test BigIntBase

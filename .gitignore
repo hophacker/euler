@@ -1,2 +1,3 @@
-*.swp
-*.o
+BigInteger/obj/
+BigInteger/debug
+BigInteger/open.sh
