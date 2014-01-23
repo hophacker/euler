@@ -316,38 +316,40 @@ void BigIntBase::multiply(BigIntBase &A, int b){
     }
     size = i;
 }
-void BigIntBase::divide(BigIntBase &c, BigIntBase &b){
-    BigIntBase a = c;
+BigIntBase BigIntBase::divide(BigIntBase &A, BigIntBase &b){
+    BigIntBase a = A;
     assert(!b.isZero());
     if (b.isOne()){
         operator = (a);
-        return;
+        return operator = (0);
     }else if (a.size < b.size){
         operator = (0);
-        return;
+        return a;
     }
 
-    clear(a.size - b.size + 1, 0);
 
     BigIntBase B[10];
     B[0] = 0; 
     for (int i = 1; i <= 9; i++) B[i] = b + B[i-1];
+    //If b = *this, clear must be after calclulating B
+    ui bSize = b.size;
 
+    clear(a.size - bSize + 1, 0);
 
-    bool first = true;
-    //important!
     a[a.size] = 0;
     ui len;
-    for (int i = a.size-b.size; i >= 0; i--){
-        if (a[i+b.size-1] == 0 && a[i+b.size] == 0){
+    for (int i = a.size-bSize; i >= 0; i--){
+        if (a[i+bSize-1] == 0 && a[i+bSize] == 0){
             data[i] = 0;
             continue;
         }
-        data[i] = a.calcDigit(i, b.size+1, B);
+        data[i] = a.calcDigit(i, bSize+1, B);
         a.subtract(i, B[data[i]]);
     }
-    size = a.size - b.size + 1;
+    size = a.size - bSize + 1;
     shrink();
+    a.shrink();
+    return a;
 }
 BigIntBase BigIntBase::square(){
     return (*this)*(*this);
@@ -434,6 +436,16 @@ BigIntBase BigIntBase::operator/(BigIntBase &b){
     BigIntBase ret;
     ret.divide(*this, b);
     return ret;
+}
+
+void BigIntBase::operator/=(BigIntBase& b){
+    this->divide(*this, b);
+}
+BigIntBase BigIntBase::operator%(BigIntBase &b){
+    return divide(*this,b);
+}
+void BigIntBase::operator%=(BigIntBase& b){
+    *this = divide(*this,b);
 }
 string BigIntBase::toStringInBase(ui base){
     if (base == 10){

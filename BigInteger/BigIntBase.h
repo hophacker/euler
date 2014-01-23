@@ -1,4 +1,4 @@
-#undef DEBUG 
+#define DEBUG 
 
 #ifndef BIGINTBASE_H
 #define BIGINTBASE_H
@@ -89,7 +89,7 @@ public:
     void subtract(int pos, BigIntBase &b);
     void multiply(BigIntBase &a, BigIntBase &b);
     void multiply(BigIntBase &a, int b);
-    void divide(BigIntBase &a, BigIntBase &b);
+    BigIntBase divide(BigIntBase &a, BigIntBase &b);
     void shrink(){
         while( size > 0 && data[size-1] == 0) size--;
     }
@@ -105,6 +105,9 @@ public:
     BigIntBase operator*(int b);
     void operator*=(BigIntBase& b);
     BigIntBase operator/(BigIntBase &b);
+    void operator/=(BigIntBase& b);
+    BigIntBase operator%(BigIntBase &b);
+    void operator%=(BigIntBase& b);
     string toStringInBase(ui base);
     friend ostream& operator <<(ostream &os, BigIntBase& n);
 };

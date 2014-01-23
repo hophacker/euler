@@ -56,6 +56,17 @@ int main(){
     test("11", e7.toStringInBase(10), "129387084292429566");
     e7 -= e6;
     test("12", e7.toStringInBase(10), "129387061951195443");
+    //division
     test("13", e8.toStringInBase(10), "5791404");
-    
+    BigIntBase g1("123"), g2("123123124123123123123"), g3("987988767");
+    g1 = g1 / g1;
+    test("14", g1.toStringInBase(10), "1");
+    g2 /= g3;
+    test("15", g2.toStringInBase(10), "124619963541");
+    g2 %= g3;
+    test("16", g2.toStringInBase(10), "133378899");
 }
+
+
+
+
