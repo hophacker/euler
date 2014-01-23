@@ -25,7 +25,7 @@ int main(){
     //  use results of euler problems to test
     problem20();
     BigIntBase a;
-    test("1", a.capacity, 100);   //1
+    test("1", a.capacity, 0);   //1
     BigIntBase b("123"), b1("1234"), b2("122");
     test("2", b.compare(b1), -1); //2
     test("3", b.compare(b2), 1); //3
@@ -42,8 +42,20 @@ int main(){
     BigIntBase f1("37107287533902102798797998220837590246510135740250");
     BigIntBase f2("46376937677490009712648124896970078050417018260538");
     BigIntBase f3 = f1 + f2;
-    test("8", f3.toStringInBase(10), "83484225211392112511446123117807668296927154000788"); //7
+    test("7", f3.toStringInBase(10), "83484225211392112511446123117807668296927154000788"); //7
     //multiply
     BigIntBase e1("123098787980787"), e2("1231298789708088"), e = e1 * e2;
-    cout << e << endl;
+    test("8", e.toStringInBase(10), "151571388655275562950682505256");
+    BigIntBase e3("129387128974897812"), e4 = e3 * 1234;
+    test("9", e4.toStringInBase(10), "159663717155023900008");
+    //substract
+    BigIntBase e5("129387128974897812"), e6("22341234123"), e8 = e5/e6, e7 = e5 - e6;
+    test("10", e7.toStringInBase(10), "129387106633663689");
+    //one big int appears at both left side and right side
+    e7 = e7 - e6;
+    test("11", e7.toStringInBase(10), "129387084292429566");
+    e7 -= e6;
+    test("12", e7.toStringInBase(10), "129387061951195443");
+    test("13", e8.toStringInBase(10), "5791404");
+    
 }

@@ -1,3 +1,5 @@
+#undef DEBUG 
+
 #ifndef BIGINTBASE_H
 #define BIGINTBASE_H
 #include "../euler.h"
@@ -14,16 +16,25 @@ typedef unsigned char BigUnit;
  *     the implementation mechanism may very different, which is difficult to employ
  *     the funcionality of STL::vector.
  * 2.Representation of ingeter:
- *   A. If size==0, the value is 0.
- *   B. If size>0, the value is one positive integer.
+ *   A. If size==0, the value is undefined.
+ *   B. If size==1 && data[i] == 0, the value is 0.
  */
 
 class BigIntBase{
 private:
-    const static ui defaultCapacity = 20;
+    //Reverve "addCapacity" BigUnit to prevent early expanding. For example, divide method needs to put
+    //one 0 before the highest digit of dividend.
+    const static ui addCapacity = 2;
+    //max capacity for int 32 is 10
+    const static ui capacityOfI32 = 10 + addCapacity;
     /* This constructor is convenient when an object with specific capacity is needed inside the class
      */
     BigIntBase(bool forCapacity, ui _capacity);
+    BigIntBase(ui val, ui _capacity);
+    BigIntBase(int val, ui _capacity);
+    unsigned GetNumberOfDigits (unsigned i) {
+        return i > 0 ? (int) log10 ((double) i) + 1 : 1;
+    }
     void setCapacity(ui length);
     //This is a member function Initializing unsigned int which is shared by "BigIntBase(ui)" and "BigIntBase(int)"
     //I was so sad that C++ does not support calling constructor inside of another constructor, which is convenient,
@@ -37,6 +48,7 @@ public:
     BigUnit* data = NULL;
     static const BigUnit digitMul[][10];
 public:
+    void print();
     BigIntBase();
     BigIntBase(ui n){initializeUI(n);}
     BigIntBase(int n){assert(n >= 0); initializeUI((ui)n);}
@@ -53,24 +65,47 @@ public:
      * for example, when multiplication occurs.
      */
     BigIntBase(const BigIntBase& rhs, int rhsCapacity);
-    void assign(BigIntBase& lhs, const BigIntBase& rhs, int newCapacity);
-    void setCapacity();
+    inline bool setZero(){
+        if (capacity == 0) setCapacity(1);
+        size = 1; data[0] = 0;
+    }
+    inline bool isZero(){
+        return (size == 1 && data[0] == 0);
+    }
+    inline bool isOne(){
+        return (size == 1 && data[0] == 1);
+    }
+    int subCompare(int t, ui len, BigIntBase &b);
+    int compare(BigIntBase &b);
+    BigUnit calcDigit(int pos, ui len, BigIntBase* B);
+    void assign(const BigIntBase& rhs);
+    void assign(ui val);
+    void assign(int val);
     void clear(ui length, BigUnit value);
     void expand(int newCapacity);
     BigUnit& operator[](const ui idx);
-    int compare(BigIntBase &b);
     void add(BigIntBase &a, BigIntBase &b);
     void subtract(BigIntBase &a, BigIntBase &b);
-    void multiply(BigIntBase &A, BigIntBase &B);
+    void subtract(int pos, BigIntBase &b);
+    void multiply(BigIntBase &a, BigIntBase &b);
+    void multiply(BigIntBase &a, int b);
+    void divide(BigIntBase &a, BigIntBase &b);
+    void shrink(){
+        while( size > 0 && data[size-1] == 0) size--;
+    }
     BigIntBase square();
     BigIntBase pow(ui n);
     BigIntBase& operator=(const BigIntBase &rhs);
-    void operator*=(BigIntBase& b);
-    BigIntBase operator*(BigIntBase &b);
+    BigIntBase& operator=(const int rhs);
     BigIntBase operator+(BigIntBase& b);
     BigIntBase operator+=(BigIntBase& b);
     BigIntBase operator-(BigIntBase& b);
+    void operator-=(BigIntBase& b);
+    BigIntBase operator*(BigIntBase &b);
+    BigIntBase operator*(int b);
+    void operator*=(BigIntBase& b);
+    BigIntBase operator/(BigIntBase &b);
     string toStringInBase(ui base);
+    friend ostream& operator <<(ostream &os, BigIntBase& n);
 };
-ostream& operator <<(ostream &os, BigIntBase& n);
 #endif

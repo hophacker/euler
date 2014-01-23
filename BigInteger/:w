@@ -23,12 +23,12 @@ BigIntBase::BigIntBase(ui val, ui _capacity){
 BigIntBase::BigIntBase(int val, ui _capacity){
     BigIntBase((ui)val, _capacity);
 }
-BigIntBase::BigIntBase(): size(0), capacity(0){
+BigIntBase::BigIntBase(): size(0){
 //    setCapacity();
 }
 
 void BigIntBase::initializeUI(ui n){
-    setCapacity(capacityOfI32);
+    setCapacity();
     if (n == 0){
         setZero();
     }else{
@@ -48,10 +48,10 @@ BigIntBase::BigIntBase(const char* numStr){
 }
 BigIntBase::BigIntBase(const BigIntBase& rhs){
     //cout << "Operator copy has been called" << endl;
-    assign(rhs);
+    assign(rhs, rhs.size);
 }
 BigIntBase::BigIntBase(const BigIntBase& rhs, int rhsCapacity){
-    assign(rhs);
+    assign(rhs, rhsCapacity);
 }
 
 /*
@@ -65,13 +65,14 @@ BigIntBase::BigIntBase(const BigIntBase& rhs, int rhsCapacity){
  */
 
 int BigIntBase::subCompare(int pos, ui len, BigIntBase &b){
+    BigIntBase& a = *this;
     while(len > 0 && data[pos+len-1] == 0) len--;
 
     if (len != b.size) return len - b.size;
     else{
         for (int i = len-1; i >= 0; i--){
             if (data[i+pos] == b[i]) continue;
-            else return data[i+pos] - b[i];
+            else return a[i] - b[i];
         }
         return 0;
     }
@@ -89,12 +90,13 @@ int BigIntBase::compare(BigIntBase &b) {
 }
 BigUnit BigIntBase::calcDigit(int pos, ui len, BigIntBase* B){
     // B.size >= len
-    int L = 0, R = 9, M, cmp;
+    int L = 0, R = 9, M, cmp, ans;
     // [L,M] {L, M}
     while(L <= R){
         M = (L+R) >> 1;
         cmp = subCompare(pos, len, B[M]);
         if (cmp >= 0){ //[M,R] {M+1,R}
+            ans = M;
             L = M+1;
         }else{ //[L,M-1] {L,M-1}
             R = M-1;
@@ -102,9 +104,9 @@ BigUnit BigIntBase::calcDigit(int pos, ui len, BigIntBase* B){
     }
     return R;
 }
-void BigIntBase::assign(const BigIntBase& rhs){
+void BigIntBase::assign(const BigIntBase& rhs, int newCapacity){
     this->size = rhs.size;
-    this->setCapacity(rhs.size);
+    this->setCapacity(newCapacity);
     memcpy(this->data, rhs.data, sizeof(BigUnit) * this->capacity);
 }
 
@@ -122,11 +124,13 @@ void BigIntBase::assign(ui val){
 void BigIntBase::assign(int val){
     assign((ui)val);
 }
+void BigIntBase::setCapacity(){
+    setCapacity(defaultCapacity);
+}
 
-//Only add "addCapacity" here.
 void BigIntBase::setCapacity(ui _capacity){
     free(data);
-    data = new BigUnit[capacity=_capacity+addCapacity];
+    data = new BigUnit[capacity=_capacity];
 }
 
 /*
@@ -138,22 +142,16 @@ void BigIntBase::setCapacity(ui _capacity){
  *--------------------------------------------------------------------------------------
  */
 void BigIntBase::clear(ui length, BigUnit value){
-    if (capacity < length){
-        length += 2;
+    if (capacity < length)
         setCapacity(length);
-    }
     for (ui i = 0; i < length; i++)
         (*this)[i] = value;
 }
 void BigIntBase::expand(int newCapacity){
-#ifdef DEBUG
-    print();
     cout << "expand here" << endl;
-    cout << newCapacity << endl;
-#endif
     BigUnit* newData = new BigUnit[newCapacity];
     BigUnit* temp = data;
-    memcpy(newData, data, sizeof(BigUnit)*size);
+    memcpy(newData, data, sizeof(BigUnit)*capacity);
     data = newData;
     capacity = newCapacity;
     free(temp);
@@ -316,8 +314,7 @@ void BigIntBase::multiply(BigIntBase &A, int b){
     }
     size = i;
 }
-void BigIntBase::divide(BigIntBase &c, BigIntBase &b){
-    BigIntBase a = c;
+void BigIntBase::divide(BigIntBase &a, BigIntBase &b){
     assert(!b.isZero());
     if (b.isOne()){
         operator = (a);
@@ -344,10 +341,8 @@ void BigIntBase::divide(BigIntBase &c, BigIntBase &b){
             continue;
         }
         data[i] = a.calcDigit(i, b.size+1, B);
-        a.subtract(i, B[data[i]]);
+        substract(B[data[i]]);
     }
-    size = a.size - b.size + 1;
-    shrink();
 }
 BigIntBase BigIntBase::square(){
     return (*this)*(*this);
@@ -367,12 +362,25 @@ BigIntBase BigIntBase::pow(ui n){
     return ret;
 }
 BigIntBase& BigIntBase::operator=(const BigIntBase& rhs) {
-    assign(rhs);
+    assign(rhs, rhs.capacity);
     return *this;
 }
 BigIntBase& BigIntBase::operator=(const int rhs) {
     assign(rhs);
     return *this;
+}
+BigIntBase BigIntBase::operator*(BigIntBase& b) {
+    BigIntBase ret;
+    ret.multiply(*this, b);
+    return ret;
+}
+BigIntBase BigIntBase::operator*(int b) {
+    BigIntBase ret;
+    ret.multiply(*this, b);
+    return ret;
+}
+void BigIntBase::operator*=(BigIntBase& b) {
+    multiply(*this, b);
 }
 BigIntBase BigIntBase::operator+(BigIntBase& b) {
     BigIntBase ret(true, max(b.size, this->size)+1);
@@ -416,24 +424,7 @@ void BigIntBase::operator-=(BigIntBase& b){
         else a[i] = a[i]-1, carry = 0;
     for (; i < a.size; i++)
         a[i] = a[i];
-}
-BigIntBase BigIntBase::operator*(BigIntBase& b) {
-    BigIntBase ret;
-    ret.multiply(*this, b);
-    return ret;
-}
-BigIntBase BigIntBase::operator*(int b) {
-    BigIntBase ret;
-    ret.multiply(*this, b);
-    return ret;
-}
-void BigIntBase::operator*=(BigIntBase& b) {
-    multiply(*this, b);
-}
-BigIntBase BigIntBase::operator/(BigIntBase &b){
-    BigIntBase ret;
-    ret.divide(*this, b);
-    return ret;
+    while( size > 0 && a[size-1] == 0) size--;
 }
 string BigIntBase::toStringInBase(ui base){
     if (base == 10){
@@ -450,7 +441,4 @@ string BigIntBase::toStringInBase(ui base){
 ostream& operator <<(ostream &os, BigIntBase& n) {
     os << n.toStringInBase(10);
     return os;
-}
-void BigIntBase::print(){
-    cout << toStringInBase(10) << endl;
 }
