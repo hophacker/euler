@@ -72,7 +72,10 @@ void testGCD(){
     BigIntBase a("169"), b("169169169169169169169169169"), c = a.gcd(b);
     test("gcdBB", c, "169");
     test("gcd", a, "169");
-    test("gcd", b, "169169169169169169169169169");
+    test("gcd1", b, "169169169169169169169169169");
+    test("gcd1", b, "169169169169169169169169169");
+    BigIntBase e("123412341234123412341234123412341234"), f("12312312312414123123412312312312312412314123");
+    BigIntBase g = e.gcd(f);
 }
 void testFour(){
     return;
@@ -86,6 +89,10 @@ void testPermutation(){
 }
 void testCombination(){
 }
+void testPow(){
+    BigIntBase a("1234"), b = a.pow(40);
+    test("Pow", b, "4493723926702212177102715930895505163093661512740028111091444935676043681712474862933310710677287635716764659044658735742976");
+}
 int main(){
     //  use results of euler problems to test
     problem20();
@@ -96,6 +103,7 @@ int main(){
     testCapacity();
     testCompare();
     testGCD();
+    testPow();
     testFour();
     testCombination();
     BigIntBase a = BigIntBase::permutation(60, 3);
