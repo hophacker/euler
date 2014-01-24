@@ -1,0 +1,6 @@
+obj/
+*.swp
+debug
+open.sh
+error
+tags
