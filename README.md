@@ -1,15 +1,50 @@
-Euler math library(c++)
+"Euler" math library(C++)
 ========
 
 
-Euler is a c++ math library created with lots of consideration of running speed which you can take to hack all kinds of hard math problems and do a lot of cool calculation.
+Euler is a c++ math library created with careful consideration of running speed which you can hire to hack all kinds of math problems and do a lot of cool calculation.
 
-
+Why I created "Euler"?
+========
 Euler was first created when I was hacking a series of computational problems from 
-[projecteuler](http://projecteuler.net/). There are a lot of repeated program routines among those questions which I think can be combined into one library. So, the work started!
-Then, when I first faced a big integer problem, I tried to find some big integer library which help me. I was so disappointed to find that there was no proper big integer library which can satisfy my need. They are either so simple or buggy. Interestingly, when I downloaded the famous [C++ Big Integer library](https://mattmccutchen.net/bigint/)(If you search "big integer library" on google, it will appear at the top of the page) and ran it. I is a huge math library created like professional, but so sadly, I found that it does not support calculation like (a = a * a).
+[projecteuler](http://projecteuler.net/). There were a lot of repeated program routines among those questions which I thought could be combined into one integral library. As a result, the work started!
 
-So I decided to create a Big Integer Library myself!
+When I was writing "euler.cc" and "euler.h", some big integer problems came up me which bothered me a lot. Though I have used Java's big integer library, which is nicely designed. There is one reason that keep me in C++ stubbornly, that is its speed!
+
+The computational problems from euler sometimes take your computer more than 10 minutes of running time, and maybe you need to run the program for several times in order to debug. I will save you much more time if I can use C++ instead of Java or other languages!
+
+Why I created a independent big integer library of "Euler"?
+========
+At first, I tried some big integer libraries. However, none of them could meet my need.
+They were either too simple to support some useful functions or too buggy to use. 
+
+If you search "Big Integer Library" on google, there's [one library]((https://mattmccutchen.net/bigint/)) ranked #1 on the page which is just built by C++. You may think that this is wise choice since that is "chosen" by google, right? 
+
+I'll tell you, no! It's buggy! That library does not even support calculation like:
+```a = a * a; ``` or ```a = a/a``` 
+Why? If your library wants to support "self-caculation" like this, you may need rewrite the code like this:
+```C++ 
+    if (A.isZero() || B.isZero()){
+        setZero();
+        return;
+    }else if (A.isOne()){
+        if (this != &B) operator = (B); //How about f1 *= f2 and f2 == BigIntBase(1)
+        return;
+    } else if (B.isOne()) {
+        if (this != &A) operator = (A);
+        return;
+    }
+```
+You may think we can still use the library "chosen" by google and write our own code like:
+```C++ 
+   BigInteger b = a, c = a * b;
+```
+How inconvinient this is! And human needs code like ```a=a*a;```
+Also, that library does not work at all when I multiply two very long integers(19695 digits). Buggy!
+The last but not least thing I want to tell you about that library is that it is too slow, at least when compared to my version of implementation.
+
+After so many frustration and disappointments from those libraries, I decided to implement my own!
+
 
 As a result, Euler has two parts now, one for normal math problems, such as calculating the sum of all the factors of a given number, the other is for big integer problems, such as calculating the greatest common divisor(GCD) of "123412341234123412341234123412341234"  and "12312312312414123123412312312312312412314123".
 
