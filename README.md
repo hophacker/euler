@@ -39,17 +39,17 @@ You may think we can still use the library "chosen" by google and write our own 
 ```C++ 
    BigInteger b = a, c = a * b;
 ```
-How inconvinient this is! And human needs code like ```a=a*a;```
+How inconvinient this way is! And human do need code like ```a=a*a;```
 Also, that library does not work at all when I multiply two very long integers(19695 digits). Buggy!
 The last but not least thing I want to tell you about that library is that it is too slow, at least when compared to my version of implementation.
 
-After so many frustration and disappointments from those libraries, I decided to implement my own!
+After so many frustrations and disappointments from all those libraries, I decided to implement my own!
 
+As a result, Euler has two parts now, one for normal math problems, such as calculating the sum of all the factors from a given number, the other is for big integer problems, such as calculating the greatest common divisor(GCD) of "123412341234123412341234123412341234"  and "12312312312414123123412312312312312412314123".
 
-As a result, Euler has two parts now, one for normal math problems, such as calculating the sum of all the factors of a given number, the other is for big integer problems, such as calculating the greatest common divisor(GCD) of "123412341234123412341234123412341234"  and "12312312312414123123412312312312312412314123".
 
 How to use `Big Integer Library`
-------------
+============
 Down Euler to your project folder: `git clone https://github.com/hophacker/euler`
  
 Now, make it! `make` and then all the objects and targets will appear in the folder "lib".
