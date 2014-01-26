@@ -60,11 +60,11 @@ Feel lazy to check the code? Here are some cool examples:
 
 **(1)Get GCD of the two numbers I give above:**
 
-```BigIntBase e("123412341234123412341234123412341234"), f("12312312312414123123412312312312312412314123");```
-
-`BigIntBase g = e.gcd(f);`
-
-`cout << g << endl`
+```C++
+    BigIntBase e("123412341234123412341234123412341234"), f("12312312312414123123412312312312312412314123");
+    BigIntBase g = e.gcd(f);
+    cout << g << endl
+```
 
 You will get the answer is `7`
 
@@ -78,10 +78,10 @@ Don't be hesitate, try it now and you will get the answer `612642662327760755883
 
 **(3)Get the power of base=1234 to exponent=40**
 
-`BigIntBase a("1234"), b = a.pow(40);`
-
-`cout << b << endl`
-
+```C++
+    BigIntBase a("1234"), b = a.pow(40);
+    cout << b << endl;
+```
 
 The answer is:`4493723926702212177102715930895505163093661512740028111091444935676043681712474862933310710677287635716764659044658735742976`
 
