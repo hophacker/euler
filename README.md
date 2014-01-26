@@ -5,7 +5,7 @@
 Euler is a c++ math library created with careful consideration of running speed which you can hire to hack all kinds of math problems and do a lot of cool calculation.
 
 Why I created "Euler"?
-========
+---
 Euler was first created when I was hacking a series of computational problems from 
 [projecteuler](http://projecteuler.net/). There were a lot of repeated program routines among those questions which I thought could be combined into one integral library. As a result, the work started!
 
@@ -14,7 +14,7 @@ When I was writing "euler.cc" and "euler.h", some big integer problems came up m
 The computational problems from euler sometimes take your computer more than 10 minutes of running time, and maybe you need to run the program for several times in order to debug. I will save you much more time if I can use C++ instead of Java or other languages!
 
 Why I created a independent big integer library of "Euler"?
-========
+---
 At first, I tried some big integer libraries. However, none of them could meet my need.
 They were either too simple to support some useful functions or too buggy to use. 
 
