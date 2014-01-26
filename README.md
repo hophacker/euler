@@ -61,7 +61,8 @@ Feel lazy to check the code? Here are some cool examples:
 **(1)Get GCD of the two numbers I give above:**
 
 ```C++
-    BigIntBase e("123412341234123412341234123412341234"), f("12312312312414123123412312312312312412314123");
+    BigIntBase e("123412341234123412341234123412341234");
+    BigIntBase f("12312312312414123123412312312312312412314123");
     BigIntBase g = e.gcd(f);
     cout << g << endl
 ```
