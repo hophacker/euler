@@ -13,7 +13,7 @@ When I was writing "euler.cc" and "euler.h", some big integer problems came up m
 
 The computational problems from euler sometimes take your computer more than 10 minutes of running time, and maybe you need to run the program for several times in order to debug. I will save you much more time if I can use C++ instead of Java or other languages!
 
-Why I created a independent big integer library of "Euler"?
+Why another big integer library
 --------
 At first, I tried some big integer libraries. However, none of them could meet my need.
 They were either too simple to support some useful functions or too buggy to use. 
