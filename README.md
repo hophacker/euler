@@ -45,18 +45,18 @@ The last but not least thing I want to tell you about that library is that it is
 
 After so many frustrations and disappointments from all those libraries, I decided to implement my own!
 
-As a result, Euler has two parts now, one for normal math problems, such as calculating the sum of all the factors from a given number, the other is for big integer problems, such as calculating the greatest common divisor(GCD) of "123412341234123412341234123412341234"  and "12312312312414123123412312312312312412314123".
+As a result, Euler has two parts now, one for normal math problems, such as calculating the sum of all the factors from a given number, the other is for big integer problems, such as calculating the greatest common divisor(GCD) of ```123412341234123412341234123412341234```  and ```12312312312414123123412312312312312412314123```.
 
 
 How to use `Big Integer Library`
 ============
-Down Euler to your project folder: `git clone https://github.com/hophacker/euler`
+Clone Euler to your project folder: `git clone https://github.com/hophacker/euler`
  
-Now, make it! `make` and then all the objects and targets will appear in the folder "lib".
+Make it, and all the objects and targets will go into folder "lib".
 
 Open the file "testBigIntBase.cc", you will find lots of examples about how to use the BigInteger library.
 
-Some cool examples here:
+Feel lazy to check the code? Here are some cool examples:
 
 **(1)Get GCD of the two numbers I give above:**
 
