@@ -88,10 +88,16 @@ void testPermutation(){
     test("PerII", a, "6126426623277607558830892659050738012468992831594946549976844836830737333775846630022365422877182368153600000000000000");
 }
 void testCombination(){
+    BigIntBase a = BigIntBase::combination(123, 60);
+    test("Com", a, "736262001162891618184199485661336016");
 }
 void testPow(){
     BigIntBase a("1234"), b = a.pow(40);
     test("Pow", b, "4493723926702212177102715930895505163093661512740028111091444935676043681712474862933310710677287635716764659044658735742976");
+}
+void testFactorial(){
+    BigIntBase a = BigIntBase::factorial(100);
+    test("Fac", a, "93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000");
 }
 int main(){
     //  use results of euler problems to test
@@ -106,9 +112,8 @@ int main(){
     testPow();
     testFour();
     testCombination();
-    BigIntBase a = BigIntBase::permutation(60, 3);
-    cout << a << endl;
     testPermutation();
+    testFactorial();
 }
 
 

@@ -134,8 +134,17 @@ public:
     //Algorithms
     BigIntBase gcd(BigIntBase &b);
     BigIntBase pow(ui n);
+    static BigIntBase factorial(int n);
     static BigIntBase permutation(int a, int b);
     static BigIntBase combination(int a, int b);
 
+    bool isPalindrome();
+    //bool isPrime();
+/*     static bool isEven(const BigInt&);
+ *     static BigInt reverseNumber(const BigInt&);
+ *     static long sumOfDigit(const BigInt&);
+ *     static int numberOfDigit(const BigInt&);
+ * 
+ */
 };
 #endif

@@ -523,16 +523,35 @@ BigIntBase BigIntBase::pow(ui n){
     }
     return ret;
 }
+BigIntBase BigIntBase::factorial(int n){
+    BigIntBase ret = BigIntBase::ONE();
+    for (int i = 1; i <= n; i++) ret *= i;
+    return ret;
+}
 BigIntBase BigIntBase::permutation(int a, int b){
-    BigIntBase res = BigIntBase::ONE();
+    BigIntBase ret = BigIntBase::ONE();
     while(b--) {
-        res *= a;
+        ret *= a;
         a--;
     }
-    return res;
+    return ret;
 }
 BigIntBase BigIntBase::combination(int a, int b){
-    BigIntBase res = BigIntBase::ONE();
+    BigIntBase num = BigIntBase::ONE();
+    BigIntBase denom = BigIntBase::ONE();
+    if (a - b < b) b = a - b;
+    for (int i = 1; i <= b; i++) denom *= i, num *= (a-i+1);
+    return num/denom;
 }
+
+bool BigIntBase::isPalindrome(){
+    for (ui i = 0; i < size/2; i++)
+        if (data[i] != data[size - i - 1]) 
+            return false;
+    return true;
+}
+
+
+
 
 

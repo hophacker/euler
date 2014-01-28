@@ -65,7 +65,7 @@ vector<bool> selectPrimes(int maxN){
  */
 vector<int> getPrimes(int maxN){
     vector<bool> p = selectPrimes(maxN);
-    int pInt = new int[664579];
+    vector<int> pInt;
     int size = 0;
     for (ui i = 0; i< p.size(); i++) 
         if (p[i]) pInt[size++] = i;

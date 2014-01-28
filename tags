@@ -64,9 +64,10 @@ BigIntBase::BigIntBase	BigIntBase.h	/^    BigIntBase(int val, ui _capacity);$/;"
 BigIntBase::BigIntBase	BigIntBase.h	/^    BigIntBase(ui n){initializeUI(n);}$/;"	f	class:BigIntBase	access:public	signature:(ui n)
 BigIntBase::BigIntBase	BigIntBase.h	/^    BigIntBase(ui val, ui _capacity);$/;"	p	class:BigIntBase	access:private	signature:(ui val, ui _capacity)
 BigIntBase::GetNumberOfDigits	BigIntBase.h	/^    unsigned GetNumberOfDigits (unsigned i) {$/;"	f	class:BigIntBase	access:private	signature:(unsigned i)
+BigIntBase::ONE	BigIntBase.h	/^    static BigIntBase ONE(){$/;"	f	class:BigIntBase	access:public	signature:()
 BigIntBase::add	BigIntBase.cc	/^void BigIntBase::add(BigIntBase &a, BigIntBase &b){$/;"	f	class:BigIntBase	signature:(BigIntBase &a, BigIntBase &b)
 BigIntBase::add	BigIntBase.h	/^    void add(BigIntBase &a, BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &a, BigIntBase &b)
-BigIntBase::addCapacity	BigIntBase.h	/^    const static ui addCapacity = 2;$/;"	m	class:BigIntBase	access:private
+BigIntBase::addCapacity	BigIntBase.h	/^    const static ui addCapacity = 10;$/;"	m	class:BigIntBase	access:private
 BigIntBase::assign	BigIntBase.cc	/^void BigIntBase::assign(const BigIntBase& rhs){$/;"	f	class:BigIntBase	signature:(const BigIntBase& rhs)
 BigIntBase::assign	BigIntBase.cc	/^void BigIntBase::assign(int val){$/;"	f	class:BigIntBase	signature:(int val)
 BigIntBase::assign	BigIntBase.cc	/^void BigIntBase::assign(ui val){$/;"	f	class:BigIntBase	signature:(ui val)
@@ -79,6 +80,8 @@ BigIntBase::capacity	BigIntBase.h	/^    ui capacity;$/;"	m	class:BigIntBase	acce
 BigIntBase::capacityOfI32	BigIntBase.h	/^    const static ui capacityOfI32 = 10 + addCapacity;$/;"	m	class:BigIntBase	access:private
 BigIntBase::clear	BigIntBase.cc	/^void BigIntBase::clear(ui length, BigUnit value){$/;"	f	class:BigIntBase	signature:(ui length, BigUnit value)
 BigIntBase::clear	BigIntBase.h	/^    void clear(ui length, BigUnit value);$/;"	p	class:BigIntBase	access:public	signature:(ui length, BigUnit value)
+BigIntBase::combination	BigIntBase.cc	/^BigIntBase BigIntBase::combination(int a, int b){$/;"	f	class:BigIntBase	signature:(int a, int b)
+BigIntBase::combination	BigIntBase.h	/^    static BigIntBase combination(int a, int b);$/;"	p	class:BigIntBase	access:public	signature:(int a, int b)
 BigIntBase::compare	BigIntBase.cc	/^int BigIntBase::compare(BigIntBase &b) {$/;"	f	class:BigIntBase	signature:(BigIntBase &b)
 BigIntBase::compare	BigIntBase.h	/^    int compare(BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &b)
 BigIntBase::data	BigIntBase.h	/^    BigUnit* data = NULL;$/;"	m	class:BigIntBase	access:public
@@ -88,7 +91,9 @@ BigIntBase::divide	BigIntBase.cc	/^BigIntBase BigIntBase::divide(BigIntBase &A, 
 BigIntBase::divide	BigIntBase.h	/^    BigIntBase divide(BigIntBase &a, BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &a, BigIntBase &b)
 BigIntBase::expand	BigIntBase.cc	/^void BigIntBase::expand(int newCapacity){$/;"	f	class:BigIntBase	signature:(int newCapacity)
 BigIntBase::expand	BigIntBase.h	/^    void expand(int newCapacity);$/;"	p	class:BigIntBase	access:public	signature:(int newCapacity)
-BigIntBase::gcd	BigIntBase.cc	/^BigIntBase BigIntBase::gcd(BigIntBase &b){$/;"	f	class:BigIntBase	signature:(BigIntBase &b)
+BigIntBase::factorial	BigIntBase.cc	/^BigIntBase BigIntBase::factorial(int n){$/;"	f	class:BigIntBase	signature:(int n)
+BigIntBase::factorial	BigIntBase.h	/^    static BigIntBase factorial(int n);$/;"	p	class:BigIntBase	access:public	signature:(int n)
+BigIntBase::gcd	BigIntBase.cc	/^BigIntBase BigIntBase::gcd(BigIntBase& B){$/;"	f	class:BigIntBase	signature:(BigIntBase& B)
 BigIntBase::gcd	BigIntBase.h	/^    BigIntBase gcd(BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &b)
 BigIntBase::initializeUI	BigIntBase.cc	/^void BigIntBase::initializeUI(ui n){$/;"	f	class:BigIntBase	signature:(ui n)
 BigIntBase::initializeUI	BigIntBase.h	/^    void initializeUI(ui n);$/;"	p	class:BigIntBase	access:private	signature:(ui n)
@@ -107,14 +112,22 @@ BigIntBase::operator *	BigIntBase.cc	/^BigIntBase BigIntBase::operator*(int b) {
 BigIntBase::operator *	BigIntBase.h	/^    BigIntBase operator*(BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &b)
 BigIntBase::operator *	BigIntBase.h	/^    BigIntBase operator*(int b);$/;"	p	class:BigIntBase	access:public	signature:(int b)
 BigIntBase::operator *=	BigIntBase.cc	/^void BigIntBase::operator*=(BigIntBase& b) {$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
+BigIntBase::operator *=	BigIntBase.cc	/^void BigIntBase::operator*=(ui b){$/;"	f	class:BigIntBase	signature:(ui b)
 BigIntBase::operator *=	BigIntBase.h	/^    void operator*=(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
+BigIntBase::operator *=	BigIntBase.h	/^    void operator*=(ui b);$/;"	p	class:BigIntBase	access:public	signature:(ui b)
 BigIntBase::operator +	BigIntBase.cc	/^BigIntBase BigIntBase::operator+(BigIntBase& b) {$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
 BigIntBase::operator +	BigIntBase.h	/^    BigIntBase operator+(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
 BigIntBase::operator +=	BigIntBase.h	/^    BigIntBase operator+=(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
 BigIntBase::operator -	BigIntBase.cc	/^BigIntBase BigIntBase::operator-(BigIntBase& b){$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
 BigIntBase::operator -	BigIntBase.h	/^    BigIntBase operator-(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
+BigIntBase::operator --	BigIntBase.cc	/^BigIntBase& BigIntBase::operator--(){$/;"	f	class:BigIntBase	signature:()
+BigIntBase::operator --	BigIntBase.h	/^    BigIntBase& operator--();$/;"	p	class:BigIntBase	access:public	signature:()
 BigIntBase::operator -=	BigIntBase.cc	/^void BigIntBase::operator-=(BigIntBase& b){$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
+BigIntBase::operator -=	BigIntBase.cc	/^void BigIntBase::operator-=(int B){$/;"	f	class:BigIntBase	signature:(int B)
+BigIntBase::operator -=	BigIntBase.cc	/^void BigIntBase::operator-=(ui B){$/;"	f	class:BigIntBase	signature:(ui B)
 BigIntBase::operator -=	BigIntBase.h	/^    void operator-=(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
+BigIntBase::operator -=	BigIntBase.h	/^    void operator-=(int b);$/;"	p	class:BigIntBase	access:public	signature:(int b)
+BigIntBase::operator -=	BigIntBase.h	/^    void operator-=(ui b);$/;"	p	class:BigIntBase	access:public	signature:(ui b)
 BigIntBase::operator /	BigIntBase.cc	/^BigIntBase BigIntBase::operator\/(BigIntBase &b){$/;"	f	class:BigIntBase	signature:(BigIntBase &b)
 BigIntBase::operator /	BigIntBase.h	/^    BigIntBase operator\/(BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &b)
 BigIntBase::operator /=	BigIntBase.cc	/^void BigIntBase::operator\/=(BigIntBase& b){$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
@@ -126,6 +139,8 @@ BigIntBase::operator =	BigIntBase.h	/^    BigIntBase& operator=(const BigIntBase
 BigIntBase::operator =	BigIntBase.h	/^    BigIntBase& operator=(const int rhs);$/;"	p	class:BigIntBase	access:public	signature:(const int rhs)
 BigIntBase::operator []	BigIntBase.cc	/^BigUnit& BigIntBase::operator[](const ui idx) {$/;"	f	class:BigIntBase	signature:(const ui idx)
 BigIntBase::operator []	BigIntBase.h	/^    BigUnit& operator[](const ui idx);$/;"	p	class:BigIntBase	access:public	signature:(const ui idx)
+BigIntBase::permutation	BigIntBase.cc	/^BigIntBase BigIntBase::permutation(int a, int b){$/;"	f	class:BigIntBase	signature:(int a, int b)
+BigIntBase::permutation	BigIntBase.h	/^    static BigIntBase permutation(int a, int b);$/;"	p	class:BigIntBase	access:public	signature:(int a, int b)
 BigIntBase::pow	BigIntBase.cc	/^BigIntBase BigIntBase::pow(ui n){$/;"	f	class:BigIntBase	signature:(ui n)
 BigIntBase::pow	BigIntBase.h	/^    BigIntBase pow(ui n);$/;"	p	class:BigIntBase	access:public	signature:(ui n)
 BigIntBase::print	BigIntBase.cc	/^void BigIntBase::print(){$/;"	f	class:BigIntBase	signature:()
@@ -345,6 +360,7 @@ NULL	/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h	397;"	d
 NULL	/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h	399;"	d
 NULL	/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h	402;"	d
 NULL	/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h	404;"	d
+ONE	BigIntBase.h	/^    static BigIntBase ONE(){$/;"	f	class:BigIntBase	access:public	signature:()
 OVERFLOW	/usr/include/math.h	337;"	d
 PDP_ENDIAN	/usr/include/endian.h	47;"	d
 PLOSS	/usr/include/math.h	340;"	d
@@ -3159,7 +3175,7 @@ acosf	/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h	1348;"	d
 acosl	/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h	1353;"	d
 add	BigIntBase.cc	/^void BigIntBase::add(BigIntBase &a, BigIntBase &b){$/;"	f	class:BigIntBase	signature:(BigIntBase &a, BigIntBase &b)
 add	BigIntBase.h	/^    void add(BigIntBase &a, BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &a, BigIntBase &b)
-addCapacity	BigIntBase.h	/^    const static ui addCapacity = 2;$/;"	m	class:BigIntBase	access:private
+addCapacity	BigIntBase.h	/^    const static ui addCapacity = 10;$/;"	m	class:BigIntBase	access:private
 alloca	/usr/include/alloca.h	29;"	d
 alloca	/usr/include/alloca.h	35;"	d
 arg1	/usr/include/math.h	/^    double arg1;$/;"	m	struct:__exception	access:public
@@ -3215,6 +3231,8 @@ clockid_t	/usr/include/time.h	/^typedef __clockid_t clockid_t;$/;"	t
 close	/usr/include/libio.h	/^  __io_close_fn *close;		\/* Close file.  *\/$/;"	m	struct:__anon128	access:public
 close	/usr/include/libio.h	/^  __io_close_fn *close;		\/* Close file.  *\/$/;"	m	struct:__anon32	access:public
 close	/usr/include/libio.h	/^  __io_close_fn *close;		\/* Close file.  *\/$/;"	m	struct:__anon80	access:public
+combination	BigIntBase.cc	/^BigIntBase BigIntBase::combination(int a, int b){$/;"	f	class:BigIntBase	signature:(int a, int b)
+combination	BigIntBase.h	/^    static BigIntBase combination(int a, int b);$/;"	p	class:BigIntBase	access:public	signature:(int a, int b)
 compare	BigIntBase.cc	/^int BigIntBase::compare(BigIntBase &b) {$/;"	f	class:BigIntBase	signature:(BigIntBase &b)
 compare	BigIntBase.h	/^    int compare(BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &b)
 comparison_fn_t	/usr/include/stdlib.h	/^typedef __compar_fn_t comparison_fn_t;$/;"	t
@@ -3263,6 +3281,8 @@ expf	/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h	1418;"	d
 expl	/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h	1423;"	d
 fabsf	/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h	1428;"	d
 fabsl	/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h	1433;"	d
+factorial	BigIntBase.cc	/^BigIntBase BigIntBase::factorial(int n){$/;"	f	class:BigIntBase	signature:(int n)
+factorial	BigIntBase.h	/^    static BigIntBase factorial(int n);$/;"	p	class:BigIntBase	access:public	signature:(int n)
 fclose	/usr/include/stdio.h	/^extern int fclose (FILE *__stream);$/;"	p	signature:(FILE *__stream)
 fcloseall	/usr/include/stdio.h	/^extern int fcloseall (void);$/;"	p	signature:(void)
 fd_mask	/usr/include/x86_64-linux-gnu/sys/select.h	/^typedef __fd_mask fd_mask;$/;"	t
@@ -3328,7 +3348,7 @@ fwrite	/usr/include/stdio.h	/^extern size_t fwrite (const void *__restrict __ptr
 fwrite_unlocked	/usr/include/stdio.h	/^extern size_t fwrite_unlocked (const void *__restrict __ptr, size_t __size,$/;"	p	signature:(const void *__restrict __ptr, size_t __size, size_t __n, FILE *__restrict __stream)
 fwscanf	/usr/include/wchar.h	/^extern int fwscanf (__FILE *__restrict __stream,$/;"	p	signature:(__FILE *__restrict __stream, const wchar_t *__restrict __format, ...)
 fwscanf	/usr/include/wchar.h	674;"	d
-gcd	BigIntBase.cc	/^BigIntBase BigIntBase::gcd(BigIntBase &b){$/;"	f	class:BigIntBase	signature:(BigIntBase &b)
+gcd	BigIntBase.cc	/^BigIntBase BigIntBase::gcd(BigIntBase& B){$/;"	f	class:BigIntBase	signature:(BigIntBase& B)
 gcd	BigIntBase.h	/^    BigIntBase gcd(BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &b)
 getc	/usr/include/stdio.h	/^extern int getc (FILE *__stream);$/;"	p	signature:(FILE *__stream)
 getc	/usr/include/stdio.h	543;"	d
@@ -3561,14 +3581,22 @@ operator *	BigIntBase.cc	/^BigIntBase BigIntBase::operator*(int b) {$/;"	f	class
 operator *	BigIntBase.h	/^    BigIntBase operator*(BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &b)
 operator *	BigIntBase.h	/^    BigIntBase operator*(int b);$/;"	p	class:BigIntBase	access:public	signature:(int b)
 operator *=	BigIntBase.cc	/^void BigIntBase::operator*=(BigIntBase& b) {$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
+operator *=	BigIntBase.cc	/^void BigIntBase::operator*=(ui b){$/;"	f	class:BigIntBase	signature:(ui b)
 operator *=	BigIntBase.h	/^    void operator*=(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
+operator *=	BigIntBase.h	/^    void operator*=(ui b);$/;"	p	class:BigIntBase	access:public	signature:(ui b)
 operator +	BigIntBase.cc	/^BigIntBase BigIntBase::operator+(BigIntBase& b) {$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
 operator +	BigIntBase.h	/^    BigIntBase operator+(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
 operator +=	BigIntBase.h	/^    BigIntBase operator+=(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
 operator -	BigIntBase.cc	/^BigIntBase BigIntBase::operator-(BigIntBase& b){$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
 operator -	BigIntBase.h	/^    BigIntBase operator-(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
+operator --	BigIntBase.cc	/^BigIntBase& BigIntBase::operator--(){$/;"	f	class:BigIntBase	signature:()
+operator --	BigIntBase.h	/^    BigIntBase& operator--();$/;"	p	class:BigIntBase	access:public	signature:()
 operator -=	BigIntBase.cc	/^void BigIntBase::operator-=(BigIntBase& b){$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
+operator -=	BigIntBase.cc	/^void BigIntBase::operator-=(int B){$/;"	f	class:BigIntBase	signature:(int B)
+operator -=	BigIntBase.cc	/^void BigIntBase::operator-=(ui B){$/;"	f	class:BigIntBase	signature:(ui B)
 operator -=	BigIntBase.h	/^    void operator-=(BigIntBase& b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase& b)
+operator -=	BigIntBase.h	/^    void operator-=(int b);$/;"	p	class:BigIntBase	access:public	signature:(int b)
+operator -=	BigIntBase.h	/^    void operator-=(ui b);$/;"	p	class:BigIntBase	access:public	signature:(ui b)
 operator /	BigIntBase.cc	/^BigIntBase BigIntBase::operator\/(BigIntBase &b){$/;"	f	class:BigIntBase	signature:(BigIntBase &b)
 operator /	BigIntBase.h	/^    BigIntBase operator\/(BigIntBase &b);$/;"	p	class:BigIntBase	access:public	signature:(BigIntBase &b)
 operator /=	BigIntBase.cc	/^void BigIntBase::operator\/=(BigIntBase& b){$/;"	f	class:BigIntBase	signature:(BigIntBase& b)
@@ -3585,6 +3613,8 @@ p_cs_precedes	/usr/include/locale.h	/^  char p_cs_precedes;$/;"	m	struct:lconv	a
 p_sep_by_space	/usr/include/locale.h	/^  char p_sep_by_space;$/;"	m	struct:lconv	access:public
 p_sign_posn	/usr/include/locale.h	/^  char p_sign_posn;$/;"	m	struct:lconv	access:public
 pclose	/usr/include/stdio.h	/^extern int pclose (FILE *__stream);$/;"	p	signature:(FILE *__stream)
+permutation	BigIntBase.cc	/^BigIntBase BigIntBase::permutation(int a, int b){$/;"	f	class:BigIntBase	signature:(int a, int b)
+permutation	BigIntBase.h	/^    static BigIntBase permutation(int a, int b);$/;"	p	class:BigIntBase	access:public	signature:(int a, int b)
 perror	/usr/include/stdio.h	/^extern void perror (const char *__s);$/;"	p	signature:(const char *__s)
 pid_t	/usr/include/sched.h	/^typedef __pid_t pid_t;$/;"	t
 pid_t	/usr/include/time.h	/^typedef __pid_t pid_t;$/;"	t
@@ -3815,9 +3845,14 @@ test	testBigIntBase.cc	/^void test(const char* label, BigIntBase test, const cha
 test	testBigIntBase.cc	/^void test(const char* label, int testValue, int rightValue){$/;"	f	signature:(const char* label, int testValue, int rightValue)
 testAdd	testBigIntBase.cc	/^void testAdd(){$/;"	f	signature:()
 testCapacity	testBigIntBase.cc	/^void testCapacity(){$/;"	f	signature:()
+testCombination	testBigIntBase.cc	/^void testCombination(){$/;"	f	signature:()
 testCompare	testBigIntBase.cc	/^void testCompare(){$/;"	f	signature:()
 testDivid	testBigIntBase.cc	/^void testDivid(){$/;"	f	signature:()
+testFour	testBigIntBase.cc	/^void testFour(){$/;"	f	signature:()
+testGCD	testBigIntBase.cc	/^void testGCD(){$/;"	f	signature:()
 testMultiply	testBigIntBase.cc	/^void testMultiply(){$/;"	f	signature:()
+testPermutation	testBigIntBase.cc	/^void testPermutation(){$/;"	f	signature:()
+testPow	testBigIntBase.cc	/^void testPow(){$/;"	f	signature:()
 testSubtract	testBigIntBase.cc	/^void testSubtract(){$/;"	f	signature:()
 this_thread	/usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h	/^  namespace this_thread { inline namespace __7 { } }$/;"	n	namespace:std
 thousands_sep	/usr/include/locale.h	/^  char *thousands_sep;		\/* Thousands separator.  *\/$/;"	m	struct:lconv	access:public
