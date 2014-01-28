@@ -1,13 +1,8 @@
 "Euler" math library(C++)
 ========
 
-
-    A dynamic C++ library to operate on really big integers; both signed & unsigned,
-with all the basic integer operations (as one can do with standard C/C++ primitive 
-integer data types like "int"/"long"/"long long") provided.
-
 Euler is a c++ math library created with careful consideration of running speed which you can hire to hack all kinds of math problems and do a lot of cool calculation.
-Euler contains an independent big integer library which can be used to operate on really big integers, with all the basic integer opeartions(+-\*/) and some advanced algorithms provided.
+Euler contains an independent big integer library which can be used to operate on really big integers, with all the basic integer opeartions(+-\*/,int,long,unsigned) and some advanced algorithms provided(greatest common divisor).
 Why I created "Euler"?
 --------
 Euler was first created when I was hacking a series of computational problems from 
